@@ -4,11 +4,11 @@ WORKDIR /var/www/html
 
 COPY composer.* ./
 
-RUN composer install --no-dev --no-scripts --ignore-platform-reqs
+RUN composer install --no-scripts --ignore-platform-reqs
 
 COPY . .
 
-RUN composer dump-autoload --no-dev --optimize
+RUN composer dump-autoload --optimize
 
 FROM php:8.1-fpm-alpine AS application
 
