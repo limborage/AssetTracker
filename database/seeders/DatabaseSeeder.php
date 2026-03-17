@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Asset;
+use App\Models\Inspection;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +21,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        Asset::factory(10)->create()->each(function ($asset) {
+            Inspection::factory()
+            ->count(rand(0,8))
+            ->create(['asset_id' => $asset->id]);
+        });
     }
 }
