@@ -24,7 +24,7 @@ return new class extends Migration
 
         Schema::create('inspections', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Asset::class);
+            $table->foreignIdFor(Asset::class)->constrained();
             $table->string('inspector_name');
             $table->boolean('passed');
             $table->text('notes');
